@@ -61,7 +61,9 @@ void setup()
   {
     //do nothing
   }
+  motors.setSpeed(0);
 }
+
 
 void loop()
 {
@@ -78,38 +80,41 @@ void loop()
   Serial.println(ch3Value);
   
   // channel 3 affects motor A
-  if(ch1Value > 10){
+  if(ch1Value > 25){
     motors.forwardA();
   }
   else{
-    if(ch1Value < 10){
+    if(ch1Value < -25){
       motors.backwardA();
     }
     else{
       motors.stopA();
+      Serial.println("Stopping A");
     }
   }
   
   // channel 3 affects motor B
-  if(ch3Value > 10){
+  if(ch3Value > 25){
     motors.forwardB();
   }
   else{
-    if(ch3Value < 10){
+    if(ch3Value < -25){
       motors.backwardB();
     }
     else{
       motors.stopB();
+      Serial.println("Stopping A");
+
     }
   }
-  //printSomeInfo(); 
+  printSomeInfo(); 
   //end loop
 }
 
 /*
 
 Print some informations in Serial Monitor
-
+*/
 void printSomeInfo()
 {
   Serial.print("Motor A is moving = ");
@@ -121,5 +126,3 @@ void printSomeInfo()
   Serial.print(" at speed = ");
   Serial.println(motors.getSpeedB());
 }
-
-*/
