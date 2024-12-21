@@ -4,7 +4,7 @@ This is a robot built for Tufts Robotics Club's fall Battlebots competition (it 
 Its name's Jake.
 
 ## Building
-Some underspecified directions for building this robot again from scratch.
+Some under-specific directions for building this robot follow.
 
 ### The Model
 Here is the model used to print it.
