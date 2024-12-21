@@ -7,7 +7,7 @@ Its name's Jake.
 Some under-specific directions for building this robot follow.
 
 ### The Model
-Here is the model used to print it.
+Here is the model, for designing and printing. Made in [Blender](https://www.blender.org/), printed with [Prusa](https://www.prusa3d.com/) technologies.
 ![Title](image.png)
 
 ### Printing
