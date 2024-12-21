@@ -97,7 +97,7 @@ graph TD
 Make sure everything is wired up correctly. (Circuit diagram coming soon...)
 
 ### Code
-All code is in [.ino](code). Upload this code the Arduino.
+All code is in [battlebot_simple_rc_movement](battlebot_simple_rc_movement). Upload this code the Arduino.
 
 ### Running
 If the above extremely vague and incomplete instructions have somehow been followed, turn the transmitter on, turn safety switch off, and you're off!
