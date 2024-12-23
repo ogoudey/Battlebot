@@ -12,8 +12,11 @@ const unsigned int EN_B = 9;
 const unsigned int IN1_B = 7;
 const unsigned int IN2_B = 8;
 
-const unsigned int CH1 = 12; // right up/down
+
+const unsigned int CH2 = 12; // right up/down
 const unsigned int CH3 = 13; // left up/down
+
+const unsigned int CH6 = 11; // switch?
 
 
 //define receiver pin
@@ -35,7 +38,10 @@ const unsigned int CH3 = 13; // left up/down
 L298NX2 motors(EN_A, IN1_A, IN2_A, EN_B, IN1_B, IN2_B);
 
 int ch1Value;
+int ch2Value;
 int ch3Value;
+int ch4Value;
+int ch6Value;
 
 // from https://dronebotworkshop.com/radio-control-arduino-car/
 
@@ -47,12 +53,18 @@ int readChannel(int channelInput, int minLimit, int maxLimit, int defaultValue){
   return map(ch, 1000, 2000, minLimit, maxLimit);
 }
 
+bool readSwitch(byte channelInput, bool defaultValue){
+  int intDefaultValue = (defaultValue)? 100: 0;
+  int ch = readChannel(channelInput, 0, 100, intDefaultValue);
+  return (ch > 5);
+}
+
 void setup()
 {
   // Used to display information
   Serial.begin(9600);
 
-  pinMode(CH1, INPUT);
+  pinMode(CH2, INPUT);
   pinMode(CH3, INPUT);
 
   // Wait for Serial Monitor to be opened
@@ -70,45 +82,45 @@ void loop()
   
 
   //Serial.println("Receiving...");
-  ch1Value = readChannel(CH1, -100, 100, 0);
+  ch2Value = readChannel(CH2, -100, 100, 0);
   ch3Value = readChannel(CH3, -100, 100, -100);
 
-  Serial.print("Ch1: ");
-  Serial.print(ch1Value);
-  Serial.print("      ");
+
+  Serial.print("Ch2: ");
+  Serial.println(ch2Value);
   Serial.print("Ch3: ");
   Serial.println(ch3Value);
   
-  // channel 3 affects motor A
-  if(ch1Value > 25){
-    motors.forwardA();
-  }
-  else{
-    if(ch1Value < -25){
-      motors.backwardA();
-    }
-    else{
-      motors.stopA();
-      Serial.println("Stopping A");
-    }
-  }
-  
-  // channel 3 affects motor B
-  if(ch3Value > 25){
+
+  // channel 2 affects motor B
+  if(ch2Value > 50){
     motors.forwardB();
   }
   else{
-    if(ch3Value < -25){
+    if(ch2Value < -50){
       motors.backwardB();
     }
     else{
       motors.stopB();
-      Serial.println("Stopping A");
+     // Serial.println("Stopping A");
+    }
+  }
+  
+  // channel 3 affects motor A
+  if(ch3Value > 50){
+    motors.forwardA();
+  }
+  else{
+    if(ch3Value < -50){
+      motors.backwardA();
+    }
+    else{
+      motors.stopA();
+      //Serial.println("Stopping B");
 
     }
   }
-  printSomeInfo(); 
-  //end loop
+
 }
 
 /*
