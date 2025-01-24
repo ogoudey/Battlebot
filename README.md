@@ -11,10 +11,10 @@ Here is the model, for designing and printing. Made in [Blender](https://www.ble
 ![Title](image.png)
 
 ### Printing
-Print all of the (about 20 parts).
+Print all of the (about 20) structural pieces.
 
 ### Hardware
-No complete list of specific hardware here. But they must be ordered.
+No complete list of specific hardware here. But they must be ordered. Includes an H-bridge, Arduino Nano, motors, wheels, etc. Inquire for recommendations. 
 
 ### Assembly
 Here a rough diagram suggesting one general way to assemble the parts. Most required screws are the same type.
